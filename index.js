@@ -1,10 +1,37 @@
+
+
+
+//----AGREGAR ADDEVENLISTENER A UN FRAGMENT CON TEMPLATE---
+
 const listaDeNombre = document.getElementById("listaDeNombre");
+const liTemplate = document.querySelector("#liTemplate");
+const fragment = document.createDocumentFragment();
+const paises = ["Chile","Perú","Venezuela"];
+
+const clickPaises = (e) => console.log("haz seleccionado a", e.target.textContent);
+
+paises.forEach(pais => {
+
+    const clone = liTemplate.content.firstElementChild.cloneNode(true)
+    clone.querySelector('span').textContent = pais;
+    console.log(clone);
+    clone.addEventListener("click", clickPaises);
+
+    fragment.appendChild(clone);
+})
+listaDeNombre.appendChild(fragment);
+ 
+
+//------------EJEMPLO CON TEMPLATE Y FRAGMENT PARA EVITAR REFLOW CON ESTRUCTURAS COMPLEJAS-----
+
+/* const listaDeNombre = document.getElementById("listaDeNombre");
 const liTemplate = document.querySelector("#liTemplate");
 const fragment = document.createDocumentFragment();
 const paises = ["Chile","Perú","Venezuela"];
 
 
 paises.forEach(pais => {
+
     const clone = liTemplate.content.cloneNode(true)
     clone.querySelector('span').textContent = pais
     console.log(clone)
@@ -12,13 +39,7 @@ paises.forEach(pais => {
     fragment.appendChild(clone)
 })
 listaDeNombre.appendChild(fragment);
-
-
-
-
-
-
-
+ */
 
 
 //-----EJEMPLO SOLO CON TEMPLATE-------------
