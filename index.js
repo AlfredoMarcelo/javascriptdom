@@ -1,11 +1,52 @@
 const listaDeNombre = document.getElementById("listaDeNombre");
-
+const liTemplate = document.querySelector("#liTemplate");
+const fragment = document.createDocumentFragment();
 const paises = ["Chile","Perú","Venezuela"];
 
 
-const fragment = document.createDocumentFragment()
+paises.forEach(pais => {
+    const clone = liTemplate.content.cloneNode(true)
+    clone.querySelector('span').textContent = pais
+    console.log(clone)
 
-paises.forEach((pais)=>{
+    fragment.appendChild(clone)
+})
+listaDeNombre.appendChild(fragment);
+
+
+
+
+
+
+
+
+
+//-----EJEMPLO SOLO CON TEMPLATE-------------
+
+/* const liTemplate = document.getElementById("liTemplate");
+const clone = liTemplate.content.cloneNode(true);
+clone.querySelector(".text-primary").textContent = "Agregando string desde template";
+console.log(clone);
+listaDeNombre.appendChild(clone); */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-------------------------Uso del Fragment-------------
+
+/* paises.forEach((pais)=>{
     const li = document.createElement('li');
     li.className = "List"
 
@@ -21,18 +62,7 @@ paises.forEach((pais)=>{
 
     fragment.appendChild(li);
 })
-listaDeNombre.appendChild(fragment)
-
-
-
-
-
-
-
-
-
-
-
+listaDeNombre.appendChild(fragment) */
 
 //-----------evitar reflow con fragment-----------
 
